@@ -17,7 +17,8 @@
     - 输出结果中每个元素出现的次数，应与元素在两个数组中出现的次数一致。
     - 我们可以不考虑输出结果的顺序。
 ***
-```C
+```cpp
+///自己刚开始的想法，时间复杂度到了平方级，不是很好
 class Solution {
 public:
     vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
@@ -32,6 +33,35 @@ public:
             }
         }
         return ret;
+    }
+};
+```
+```cpp
+///评论区的题解，运行市场只有4ms，先各自进行了排序再比较
+class Solution {
+public:
+    vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
+        sort(nums1.begin(), nums1.end());
+        sort(nums2.begin(), nums2.end());
+        int n1Size = nums1.size();
+        int n2Size = nums2.size();
+        int i = 0;
+        int j = 0;
+        vector<int> intersect;
+        while((i < n1Size) && (j < n2Size))
+        {
+            if (nums1[i] < nums2[j])
+                ++i;
+            else if (nums1[i] > nums2[j])
+                ++j;
+            else
+            {
+                intersect.push_back(nums1[i]);
+                ++i;
+                ++j;
+            }
+        }
+        return intersect;
     }
 };
 ```
