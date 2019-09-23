@@ -70,3 +70,17 @@ public:
 ```
 
 不用额外空间的做法：Floyd 算法，[环形链表2 题解](https://leetcode-cn.com/problems/linked-list-cycle-ii/)
+
+先用判断是否有环的双指针法找出相遇点，如何再用两个指针，一个从链表头，一个从相遇点同时遍历，相遇点就是入口点。原因如下：
+
+![image.png](https://pic.leetcode-cn.com/99987d4e679fdfbcfd206a4429d9b076b46ad09bd2670f886703fb35ef130635-image.png)
+
+我们利用已知的条件：慢指针移动 1 步，快指针移动 2 步，来说明它们相遇在环的入口处。（下面证明中的 tortoise 表示慢指针，hare 表示快指针）
+
+2⋅distance(tortoise) = distance(hare)
+						2(F+a) = F+a+b+a
+						2F+2a = F+2a+b
+								F = b
+
+因为 F=b，指针从 相遇点出发和从链表的头出发，最后会遍历相同数目的节点后在环的入口处相遇。
+
