@@ -1,0 +1,77 @@
+复杂环境下的数据统计问题
+
+进行数值统计的时候，可能会混入一些非数值的元素，下面请编程完成对输入序列进行求和统计并输出， 如果遇到非数值元素，则自动跳过，并在最终结果输出行之后另起一行，输出attention
+
+### 输入格式:
+
+单行输入，元素之间使用空格分开
+
+### 输出格式:
+
+对元素所对应的整数进行求和并输出
+
+如果遇到非数值元素，则自动跳过，并在最终结果输出行之后另起一行，输出attention
+
+### 输入样例a:
+
+在这里给出一组输入。例如：
+
+```in
+1 2 3 4 5
+```
+
+### 输出样例a:
+
+在这里给出相应的输出。例如：
+
+```out
+15
+```
+
+### 输入样例b:
+
+在这里给出一组输入。例如：
+
+```in
+1 2 3 4 a 5
+```
+
+### 输出样例b:
+
+在这里给出相应的输出。例如：
+
+```out
+15
+attention
+```
+
+***
+
+```java
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String args[]) {
+        Scanner scanner = new Scanner(System.in);
+        String s = scanner.nextLine();
+        String[] strings = s.split(" ");
+        int sum = 0;
+        boolean f = false;
+        for (int i = 0; i < strings.length; i++) {
+        	try {
+//Integer.parseInt(String)的作用就是将String字符类型数据转换为Integer整型数据。
+//Integer.parseInt(String)遇到一些不能被转换为整型的字符时，会抛出异常。
+                sum += Integer.parseInt(strings[i]);
+            }catch (Exception a){
+                f = true;
+                continue;
+            }
+        }
+        System.out.println(sum);
+        if (f){
+            System.out.println("attention");
+        }
+    }
+}
+```
+
