@@ -29,7 +29,7 @@ public:
             }
             if (i >= size - 1) {
                 returnVector.push_back(num[doubleQueue[0]]);
-            }
+            }  
         }
         return returnVector;
     }
