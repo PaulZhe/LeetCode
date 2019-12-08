@@ -18,11 +18,11 @@ public:
         deque<int> doubleQueue;
         for (int i = 0; i < num.size(); i++) {
             while(1) {
-                if(doubleQueue.empty() || num[doubleQueue.back()] > num[i]) {
-                    doubleQueue.push_back(i);
-                    break;
-            }
-            doubleQueue.pop_back();
+              if(doubleQueue.empty() || num[doubleQueue.back()] > num[i]) {
+                doubleQueue.push_back(i);
+                break;
+              }
+              doubleQueue.pop_back();
             }
             if(i - doubleQueue[0] >= size) {
                 doubleQueue.pop_front();
